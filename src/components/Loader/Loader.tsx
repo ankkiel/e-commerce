@@ -7,6 +7,7 @@ export type LoaderProps = {
   /** Дополнительный класс */
   className?: string;
   color?: string;
+  type?: 'loading' | 'static';
 };
 
 const loaderSvgConfig = {
@@ -30,9 +31,9 @@ const loaderSvgConfig = {
   },
 };
 
-const Loader: React.FC<LoaderProps> = ({ size = 'l', className, color }) => {
+const Loader: React.FC<LoaderProps> = ({ size = 'l', className, color, type = 'loading' }) => {
   const { width, height, viewBox, path } = loaderSvgConfig[size];
-  const cnLoader = cn(style.loader, style.loader_default, className);
+  const cnLoader = cn(style.loader, style[`loader_${type}`], className);
 
   return (
     <div className={cnLoader}>

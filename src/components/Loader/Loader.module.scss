@@ -12,7 +12,7 @@
 .loader {
   fill: $loader-bg;
 
-  &_default {
+  &_loading {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,5 +25,9 @@
     svg {
       animation: spin 1s linear infinite;
     }
+  }
+
+  &_static {
+    fill: $neutral-1;
   }
 }
