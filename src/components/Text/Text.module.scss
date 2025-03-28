@@ -1,0 +1,69 @@
+@use "styles/variables.scss" as *;
+
+.text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  font-family: "Roboto";
+
+  &_button {
+    font-size: 18px;
+    line-height: 100%;
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 109%;
+  }
+
+  &_subtitle {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 112%;
+  }
+
+  &_p-20 {
+    font-size: 20px;
+    line-height: 120%;
+  }
+
+  &_p-18 {
+    font-size: 18px;
+    line-height: 122%;
+  }
+
+  &_p-16 {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  &_p-14 {
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  &_primary {
+    color: $text-primary;
+  }
+
+  &_secondary {
+    color: $text-secondary;
+  }
+
+  &_accent {
+    color: $text-accent;
+  }
+
+  &_normal {
+    font-weight: 400;
+  }
+
+  &_medium {
+    font-weight: 500;
+  }
+
+  &_bold {
+    font-weight: 700;
+  }
+}
