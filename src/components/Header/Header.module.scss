@@ -1,0 +1,57 @@
+@use "styles/variables.scss" as *;
+
+.header {
+  background-color: $neutral-1;
+  &__wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    text-decoration: none;
+    color: $text-primary;
+    font-weight: 400;
+
+    &_active {
+      position: relative;
+      color: $text-accent;
+      font-weight: 600;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -37px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $text-accent;
+      }
+    }
+
+    &:hover {
+      color: $text-accent;
+    }
+  }
+
+  &__links {
+    display: flex;
+    column-gap: 48px;
+  }
+
+  &__actions {
+    display: flex;
+    column-gap: 24px;
+  }
+
+  &__action svg {
+    &:hover {
+      stroke: $text-accent;
+    }
+  }
+}

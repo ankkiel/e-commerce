@@ -1,0 +1,17 @@
+.products {
+  padding-top: 35px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 79px;
+    row-gap: 30px;
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    margin-bottom: 35px;
+  }
+}

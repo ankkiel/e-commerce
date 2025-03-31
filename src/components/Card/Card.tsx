@@ -43,17 +43,17 @@ const Card: React.FC<CardProps> = ({
         <Text view="p-20" tag="h1" weight="medium" color="primary" maxLines={2}>
           {title}
         </Text>
-        <Text view="p-16" tag="p" weight="normal" color="secondary" maxLines={3}>
+        <Text className={style.card__subtitle} view="p-16" tag="p" weight="normal" color="secondary" maxLines={3}>
           {subtitle}
         </Text>
-        <div className={style.card__footer}>
-          {contentSlot && (
+        {contentSlot && (
+          <div className={style.card__footer}>
             <Text view="p-18" tag="span" weight="bold" color="primary" maxLines={1}>
               {contentSlot}
             </Text>
-          )}
-          {actionSlot}
-        </div>
+            {actionSlot}
+          </div>
+        )}
       </div>
     </div>
   );

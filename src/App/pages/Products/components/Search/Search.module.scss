@@ -1,0 +1,17 @@
+.search {
+  &__wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 24px;
+  }
+
+  &__button {
+    width: 137px;
+    padding: 16px 14px;
+  }
+}

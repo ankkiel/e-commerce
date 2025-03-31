@@ -1,0 +1,13 @@
+@use "styles/variables.scss" as *;
+
+.relatedItems {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    column-gap: 79px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+}

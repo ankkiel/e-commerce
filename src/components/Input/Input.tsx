@@ -26,7 +26,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           {...props}
           type="text"
-          onChange={handleChange}
+          onChange={onChange || handleChange}
           value={value}
           placeholder={placeholder}
           disabled={disabled}

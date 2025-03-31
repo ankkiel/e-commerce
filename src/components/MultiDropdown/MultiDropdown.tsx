@@ -15,12 +15,14 @@ export type MultiDropdownProps = {
   value?: Option[];
   disabled?: boolean;
   children?: React.ReactNode;
+  placeholder?: string;
   getTitle?: (value: Option[]) => string;
 };
 
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
   className,
   options,
+  placeholder,
   value: propValue = [],
   disabled = false,
   getTitle = (values: Option[]) => values.map(({ value }) => value).join(', '),
@@ -39,7 +41,9 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const selectOption = (option: Option) => {
     const selected = selectedOptions.some((v) => v.key === option.key);
     const newValue = selected ? selectedOptions.filter((v) => v.key !== option.key) : [...selectedOptions, option];
+
     setSelectedOptions(newValue);
+    onChange(newValue);
   };
 
   const optionActive = (option: Option) => selectedOptions.some((v) => v.key === option.key);
@@ -65,7 +69,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
       <Input
         value={getTitle(selectedOptions)}
         disabled={disabled}
-        placeholder={getTitle(selectedOptions)}
+        placeholder={getTitle(selectedOptions) || placeholder}
         onChange={inputChanged}
         onFocus={inputFocused}
         afterSlot={true}

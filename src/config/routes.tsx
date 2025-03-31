@@ -1,7 +1,7 @@
 import { Navigate, RouteObject } from 'react-router';
 import App from '../App';
-import ProductPage from '../pages/Product';
-import ProductsPage from '../pages/Products';
+import ProductPage from '../App/pages/Product';
+import ProductsPage from '../App/pages/Products';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -23,3 +23,5 @@ export const routesConfig: RouteObject[] = [
     element: <Navigate to="/" replace />,
   },
 ];
+
+export default routesConfig;

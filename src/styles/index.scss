@@ -1,11 +1,13 @@
 @use "./fonts.scss";
 @use "./variables.scss";
+@use "./reset.scss";
 
 html,
 body {
   font-family: "Roboto";
   margin: 0;
   padding: 0;
+  background-color: #f5f5f5;
 }
 
 * {
@@ -23,4 +25,14 @@ blockquote,
 figure,
 pre {
   margin: 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 99px 113px 101px;
+}
+
+a {
+  text-decoration: none;
 }
