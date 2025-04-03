@@ -1,10 +1,4 @@
-// Colors
-$brand: #518581;
-$brand-hover: #86aaa7;
-$brand-active: #487773;
-
-$neutral-1: #ffffff;
-$neutral-2: #d9d9d9;
+@use "./colors.scss" as *;
 
 // Spacing
 $space-xl: 24px;
@@ -15,7 +9,10 @@ $space-xs: 12px;
 $space-xxs: 8px;
 
 // Colors for components
+$header-bg: $neutral-1;
+
 $loader-bg: $brand;
+$loader-fill: $neutral-1;
 
 $text-primary: #000000;
 $text-secondary: #afadb5;
@@ -56,3 +53,7 @@ $checkbox-border-disabled: rgba(255, 255, 255, 0);
 $checkbox-check: $brand;
 $checkbox-check-hover: $brand;
 $checkbox-check-disabled: rgba(0, 0, 0, 0.2);
+
+$pagination-bg-active: $brand;
+$pagination-text-active: $neutral-1;
+$pagination-bg-hover: $brand-hover;

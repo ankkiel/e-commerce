@@ -1,7 +1,7 @@
-@use "styles/variables.scss" as *;
+@use "@/styles/variables.scss" as *;
 
 .header {
-  background-color: $neutral-1;
+  background-color: $header-bg;
   &__wrapper {
     padding-top: 24px;
     padding-bottom: 24px;

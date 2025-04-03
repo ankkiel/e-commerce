@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import Icon from 'components/icons/CheckIcon';
+import Icon from '../icons/CheckIcon';
 import style from './CheckBox.module.scss';
 
 export type CheckBoxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {

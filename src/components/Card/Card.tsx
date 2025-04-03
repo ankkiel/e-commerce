@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import Text from 'components/Text';
+import Text from '../Text';
 import style from './Card.module.scss';
 
 export type CardProps = {
@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className={cn(style.card, className)} onClick={onClick}>
-      <img className={style['card__image']} src={image} alt="card" />
+      <img className={style.card__image} src={image} alt="card" />
       <div className={style.card__content}>
         {captionSlot && (
           <Text view="p-14" tag="span" weight="medium" color="secondary" maxLines={1}>
