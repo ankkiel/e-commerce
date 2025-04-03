@@ -1,0 +1,39 @@
+@use "@/styles/variables.scss" as *;
+
+.card {
+  max-width: 360px;
+  font-family: "Roboto";
+  background-color: $card-bg;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  transition: box-shadow 0.5s ease-out;
+
+  &:hover {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  &__image {
+    width: 360px;
+    height: 360px;
+    background-color: $card-image-bg;
+  }
+
+  &__content {
+    padding: $space-xl $space-xs;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+}

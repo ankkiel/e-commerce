@@ -1,0 +1,42 @@
+@use "@/styles/variables.scss" as *;
+
+.product {
+  max-width: 100%;
+
+  &__card {
+    display: flex;
+    gap: 48px;
+    margin-top: 23px;
+    margin-bottom: 48px;
+  }
+
+  &__image {
+    width: 600px;
+    height: 600px;
+    background-color: $card-image-bg;
+  }
+
+  &__price {
+    margin-top: 80px;
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 48px;
+  }
+
+  &__action {
+    padding: 17px 32px;
+  }
+
+  &__action_secondary {
+    background-color: transparent;
+    border: 1px solid $text-secondary;
+    color: $text-primary;
+  }
+}

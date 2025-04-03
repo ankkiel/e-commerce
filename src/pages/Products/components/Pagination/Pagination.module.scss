@@ -1,0 +1,73 @@
+@use "@/styles/variables.scss" as *;
+
+.pagination {
+  margin-top: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Eudoxus Sans";
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 15px;
+  }
+
+  .pageItem {
+    margin: 0 5px;
+
+    &.pagePrev,
+    &.pageNext {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+
+    &.pagePrev svg {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      stroke: #151411;
+    }
+
+    .pageLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+
+      width: 38px;
+      height: 42px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 180%;
+      text-align: center;
+      color: #151411;
+
+      &_active {
+        background-color: $pagination-bg-active;
+        color: $pagination-text-active;
+        border-color: inherit;
+      }
+
+      &:hover {
+        background-color: $pagination-bg-active;
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@use "@/styles/variables.scss" as *;
+
+.backToProducts {
+  margin-top: 60px;
+  &__wrapper {
+    width: 129px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 25px;
+    text-align: center;
+    text-decoration: none;
+
+    color: $text-primary;
+  }
+}

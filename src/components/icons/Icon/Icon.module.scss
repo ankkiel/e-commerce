@@ -1,0 +1,31 @@
+@use "@/styles/variables.scss" as *;
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_fill-primary {
+    fill: $text-primary;
+  }
+
+  &_fill-secondary {
+    fill: $text-secondary;
+  }
+
+  &_fill-accent {
+    fill: $text-accent;
+  }
+
+  &_stroke-primary {
+    stroke: $text-primary;
+  }
+
+  &_stroke-secondary {
+    stroke: $text-secondary;
+  }
+
+  &_stroke-accent {
+    stroke: $text-accent;
+  }
+}

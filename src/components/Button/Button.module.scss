@@ -1,0 +1,46 @@
+@use "@/styles/variables.scss" as *;
+
+$space-s: 13px;
+
+.button {
+  position: relative;
+  padding: $space-s $space-l;
+  border: none;
+
+  min-height: 52px;
+
+  color: $button-primary-text;
+  background-color: $button-primary-bg;
+  transition:
+    background-color 0.2s ease-out,
+    color 0.2s ease-out;
+
+  &:disabled {
+    color: $button-primary-text-disabled;
+    background-color: $button-primary-bg-disabled;
+
+    cursor: not-allowed;
+  }
+
+  &_default {
+    cursor: pointer;
+
+    &:hover {
+      color: $button-primary-text-hover;
+      background-color: $button-primary-bg-hover;
+    }
+    &:active {
+      color: $button-primary-text-active;
+      background-color: $button-primary-bg-active;
+    }
+  }
+
+  &_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    gap: $space-xxs;
+  }
+}

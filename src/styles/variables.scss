@@ -1,0 +1,59 @@
+@use "./colors.scss" as *;
+
+// Spacing
+$space-xl: 24px;
+$space-l: 20px;
+$space-m: 16px;
+$space-s: 14px;
+$space-xs: 12px;
+$space-xxs: 8px;
+
+// Colors for components
+$header-bg: $neutral-1;
+
+$loader-bg: $brand;
+$loader-fill: $neutral-1;
+
+$text-primary: #000000;
+$text-secondary: #afadb5;
+$text-accent: $brand;
+
+$button-primary-text: $neutral-1;
+$button-primary-text-hover: $neutral-1;
+$button-primary-text-disabled: $neutral-1;
+$button-primary-text-active: $neutral-1;
+
+$button-primary-bg: $brand;
+$button-primary-bg-active: $brand-active;
+$button-primary-bg-disabled: $neutral-2;
+$button-primary-bg-hover: $brand-hover;
+
+$card-bg: $neutral-1;
+$card-image-bg: $neutral-2;
+
+$input-text: $text-primary;
+$input-text-focus: $text-primary;
+$input-text-disabled: rgba(0, 0, 0, 0.2);
+$input-bg: $neutral-1;
+$input-bg-focus: $neutral-1;
+$input-bg-disabled: $neutral-1;
+$input-placeholder: $text-secondary;
+$input-border: $neutral-1;
+$input-border-focus: $brand;
+$input-border-disabled: $neutral-1;
+
+$dropdown-options-bg: $neutral-1;
+
+$checkbox-bg: $neutral-1;
+$checkbox-bg-hover: $neutral-1;
+$checkbox-bg-disabled: rgba(255, 255, 255, 0.5);
+$checkbox-border: $neutral-1;
+$checkbox-border-hover: $brand;
+$checkbox-border-disabled: rgba(255, 255, 255, 0);
+$checkbox-check: $brand;
+$checkbox-check-hover: $brand;
+$checkbox-check-disabled: rgba(0, 0, 0, 0.2);
+
+$pagination-bg-active: $brand;
+$pagination-text-active: $neutral-1;
+$pagination-bg-hover: $brand-hover;
