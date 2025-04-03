@@ -1,6 +1,7 @@
-@use "styles/variables.scss" as *;
+@use "@/styles/variables" as *;
 
 .dropdown {
+  position: absolute;
   width: 400px;
   margin-top: $space-xxs;
 
