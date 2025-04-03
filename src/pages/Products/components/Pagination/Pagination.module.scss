@@ -1,4 +1,4 @@
-@use "styles/variables.scss" as *;
+@use "@/styles/variables.scss" as *;
 
 .pagination {
   margin-top: 65px;
@@ -59,13 +59,14 @@
       color: #151411;
 
       &_active {
-        background-color: $brand;
-        color: $neutral-1;
-        border-color: $brand;
+        background-color: $pagination-bg-active;
+        color: $pagination-text-active;
+        border-color: inherit;
       }
 
       &:hover {
-        background-color: $brand-hover;
+        background-color: $pagination-bg-active;
+        opacity: 0.8;
       }
     }
   }

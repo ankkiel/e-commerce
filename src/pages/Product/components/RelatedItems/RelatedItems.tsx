@@ -1,10 +1,9 @@
-import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'components/Button';
-import Card from 'components/Card';
-import Text from 'components/Text';
-import { getAllProducts } from 'config/data/getAllProducts';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Text from '@/components/Text';
+import { getAllProducts } from '@/config/data/getAllProducts';
 import style from './RelatedItems.module.scss';
 
 interface ProductType {
@@ -33,11 +32,11 @@ const RelatedItems = ({ categoryID }: { categoryID: number }) => {
   }, [categoryID]);
 
   return (
-    <div className={cn(style.relatedItems)}>
-      <Text className={cn(style.relatedItems__title)} view="p-20" weight="bold" color="primary" maxLines={1}>
+    <div className={style.relatedItems}>
+      <Text className={style.relatedItems__title} view="p-20" weight="bold" color="primary" maxLines={1}>
         Related Items
       </Text>
-      <ul className={cn(style.relatedItems__list)}>
+      <ul className={style.relatedItems__list}>
         {relatedItems.map((product) => (
           <li key={product.id}>
             <Link to={`/products/${product.id}`}>

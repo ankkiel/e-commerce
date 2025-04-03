@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import ArrowRightIcon from 'components/icons/ArrowRightIcon';
+import ArrowRightIcon from '@/components/icons/ArrowRightIcon';
 import style from './Pagination.module.scss';
 
 interface PaginationProps {
@@ -10,7 +10,7 @@ interface PaginationProps {
 
 const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
   return (
-    <nav className={cn(style.pagination)}>
+    <nav className={style.pagination}>
       <button
         className={cn(style.pageItem, style.pagePrev, { [style.disabled]: currentPage === 1 })}
         onClick={() => onChange(currentPage - 1)}
@@ -18,9 +18,9 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
       >
         <ArrowRightIcon width={35} height={35} />
       </button>
-      <ul className={cn(style['pagination__list'])}>
+      <ul className={style['pagination__list']}>
         {Array.from({ length: totalPages }).map((_, i) => (
-          <li key={i + 1} className={cn(style.pageItem)}>
+          <li key={i + 1} className={style.pageItem}>
             <a
               href="#"
               className={cn(style.pageLink, { [style.pageLink_active]: currentPage === i + 1 })}
