@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+
+import rootStore from '@/store/RootStore/instance';
 import style from './Search.module.scss';
 
 interface SearchProps {
@@ -9,13 +11,20 @@ interface SearchProps {
 }
 
 const Search = ({ searchTerm, onSearchChange }: SearchProps) => {
-  const [inputValue, setInputValue] = useState(searchTerm || '');
+  const [inputValue, setInputValue] = useState(searchTerm);
 
-  const handleInputChange = (value: string) => {
+  const value = rootStore.query.getParam('search');
+  if (value) {
     setInputValue(value);
+  }
+
+  const handleInputChange = (val: string) => {
+    rootStore.query.setSearch(val);
+    setInputValue(val);
   };
 
   const handleSearch = () => {
+    rootStore.query.setSearch(inputValue);
     onSearchChange(inputValue);
   };
 
