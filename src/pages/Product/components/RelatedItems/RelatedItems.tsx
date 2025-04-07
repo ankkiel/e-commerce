@@ -7,7 +7,7 @@ import { getAllProducts } from '@/config/data/getAllProducts';
 import style from './RelatedItems.module.scss';
 
 interface ProductType {
-  id: number;
+  id: string;
   title: string;
   description: string;
   price: number;
@@ -18,13 +18,13 @@ interface ProductType {
   };
 }
 
-const RelatedItems = ({ categoryID }: { categoryID: number }) => {
+const RelatedItems = ({ categoryID }: { categoryID: string }) => {
   const [relatedItems, setRelatedItems] = useState<ProductType[]>([]);
 
   useEffect(() => {
     const fetchRelatedItems = async () => {
       const allItems: ProductType[] = await getAllProducts();
-      const items = allItems.filter((item) => item.category.id === categoryID);
+      const items = allItems.filter((item) => item.category.id === +categoryID);
       setRelatedItems(items.slice(0, 3));
     };
 
