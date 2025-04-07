@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,50 +7,45 @@ import Card from '@/components/Card';
 import Loader from '@/components/Loader';
 import MultiDropdown, { Option } from '@/components/MultiDropdown';
 import Text from '@/components/Text';
-import { getAllProducts } from '@/config/data/getAllProducts';
-import { getProductsCategory } from '@/config/data/getProductsCategory';
+
+import CategoryStore from '@/store/CategoryStore';
+import ProductsStore from '@/store/ProductsStore';
+import { ProductItemModel } from '@/store/models/products/productitem';
+import { useLocalStore } from '@/utils/useLocalStore';
+
 import Pagination from '../Pagination';
 import Search from '../Search';
+
 import style from './Products.module.scss';
 
-interface ProductsType {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  images: string[];
-  category: {
-    id: string;
-    name: string;
-  };
-}
-
 const Products = () => {
-  const [products, setProducts] = useState<ProductsType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const productsStore = useLocalStore(() => new ProductsStore());
+  const categoryStore = useLocalStore(() => new CategoryStore());
+
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    productsStore
+      .getProductsList()
+      .then(() => setFilteredProducts(productsStore.list))
+      .catch(setError);
+  }, [productsStore]);
+
+  useEffect(() => {
+    categoryStore.getCategoryList().then(() => {
+      setOptions(categoryStore.list.map(({ id, name }) => ({ key: id, value: name })));
+    });
+  }, [categoryStore]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<ProductsType[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<ProductItemModel[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<Option[]>([]);
   const itemsPerPage = 10;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getAllProducts();
-        setProducts(data);
-        setFilteredProducts(data);
-      } catch (error: unknown) {
-        setError(`Error fetching products: ${error instanceof Error ? error.message : String(error)}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const searchedProducts = filteredProducts.filter((product) =>
+    searchTerm ? product.title.toLowerCase().includes(searchTerm.toLowerCase()) : true,
+  );
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
@@ -59,16 +55,12 @@ const Products = () => {
   const handleFilterChange = (options: Option[]) => {
     setSelectedCategories(options);
     const selectedCategoryKeys = options.map((option) => option.key);
-    const newFilteredProducts = products.filter((product) =>
+    const newFilteredProducts = productsStore.list.filter((product) =>
       selectedCategoryKeys.length === 0 ? true : selectedCategoryKeys.includes(product.category.id),
     );
     setFilteredProducts(newFilteredProducts);
     setCurrentPage(1);
   };
-
-  const searchedProducts = filteredProducts.filter((product) =>
-    searchTerm ? product.title.toLowerCase().includes(searchTerm.toLowerCase()) : true,
-  );
 
   const totalPages = Math.ceil(searchedProducts.length / itemsPerPage);
 
@@ -78,30 +70,12 @@ const Products = () => {
 
   const [options, setOptions] = useState<Option[]>([]);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const categories = await getProductsCategory();
-        setOptions(
-          categories.map((category: { id: string; name: string }) => ({
-            key: category.id,
-            value: category.name,
-          })),
-        );
-      } catch (error: unknown) {
-        setError(`Error fetching categories: ${error instanceof Error ? error.message : String(error)}`);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
   return (
     <div className="container">
-      {isLoading ? (
+      {error ? (
+        <div>Ошибка: {error}</div>
+      ) : productsStore.meta === 'loading' ? (
         <Loader />
-      ) : error && products.length === 0 ? (
-        <div>Ошибка: продукты не найдены</div>
       ) : (
         <div className={style.products}>
           <Search searchTerm={searchTerm} onSearchChange={handleSearchChange} />
@@ -123,7 +97,9 @@ const Products = () => {
               <li key={product.id}>
                 <Link to={`/products/${product.id}`}>
                   <Card
-                    image={product.images[0]}
+                    image={
+                      product.images[0]?.match(/\.(png|jpg|jpeg)$/) ? product.images[0] : '/public/default-image.svg'
+                    }
                     title={product.title}
                     subtitle={product.description}
                     contentSlot={`$${product.price}`}
@@ -150,4 +126,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default observer(Products);
